@@ -26,8 +26,18 @@ public class HotelService {
         return hotelRepository.findById(hotelId).orElse(null);
     }
 
-    public Hotel updateHotel(Hotel hotel) {
-        return hotelRepository.save(hotel);
+    public Hotel updateHotel(Long id, Hotel updatedHotel) {
+        Hotel existingHotel = hotelRepository.findById(id).orElse(null);
+        if (existingHotel != null) {
+            existingHotel.setName(updatedHotel.getName());
+            existingHotel.setAddress(updatedHotel.getAddress());
+            existingHotel.setRating(updatedHotel.getRating());
+            existingHotel.setRoomCount(updatedHotel.getRoomCount());
+            existingHotel.setPhoneNumber(updatedHotel.getPhoneNumber());
+            return hotelRepository.save(existingHotel);
+        } else {
+            return null;
+        }
     }
 
     public void deleteHotelById(Long hotelId) {

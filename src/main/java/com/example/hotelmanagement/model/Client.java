@@ -19,14 +19,6 @@ public class Client {
     @Column(name = "country", nullable = false)
     private String country;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getFirstName() {
         return firstName;
     }
@@ -65,5 +57,9 @@ public class Client {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

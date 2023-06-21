@@ -27,8 +27,18 @@ public class ClientService {
         return clientRepository.findById(clientId).orElse(null);
     }
 
-    public Client updateClient(Client client){
-        return clientRepository.save(client);
+    public Client updateClient(Long id, Client client){
+        Client existingClient = clientRepository.findById(id).orElse(null);
+        if (existingClient != null) {
+            existingClient.setCountry(client.getCountry());
+            existingClient.setEmail(client.getEmail());
+            existingClient.setFirstName(client.getFirstName());
+            existingClient.setLastName(client.getLastName());
+            existingClient.setPhoneNumber(client.getPhoneNumber());
+            return clientRepository.save(existingClient);
+        } else {
+            return null;
+        }
     }
 
     public void deleteClientById(Long clientId) {
