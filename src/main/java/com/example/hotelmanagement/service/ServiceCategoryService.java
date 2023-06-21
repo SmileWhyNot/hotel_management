@@ -26,8 +26,19 @@ public class ServiceCategoryService {
         return serviceCategoryRepository.findById(serviceCategoryId).orElse(null);
     }
 
-    public ServiceCategory updateServiceCategory(ServiceCategory serviceCategory){
-        return serviceCategoryRepository.save(serviceCategory);
+    public ServiceCategory updateServiceCategory(Long id, ServiceCategory updatedServiceCategory){
+        ServiceCategory existingServiceCategory = serviceCategoryRepository.findById(id).orElse(null);
+        if (existingServiceCategory != null) {
+            existingServiceCategory.setCategory(updatedServiceCategory.getCategory());
+            existingServiceCategory.setAvailability(updatedServiceCategory.isAvailability());
+            existingServiceCategory.setName(updatedServiceCategory.getName());
+            existingServiceCategory.setPrice(updatedServiceCategory.getPrice());
+            existingServiceCategory.setDescription(updatedServiceCategory.getDescription());
+            return serviceCategoryRepository.save(existingServiceCategory);
+        } else {
+            return null;
+        }
+
     }
 
     public void deleteServiceCategoryById(Long serviceCategoryId){
