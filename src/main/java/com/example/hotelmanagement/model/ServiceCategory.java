@@ -3,8 +3,8 @@ package com.example.hotelmanagement.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "service")
-public class Service {
+@Table(name = "service_category")
+public class ServiceCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

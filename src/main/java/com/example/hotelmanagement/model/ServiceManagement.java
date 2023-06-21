@@ -3,8 +3,8 @@ package com.example.hotelmanagement.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "hotel_service")
-public class HotelService {
+@Table(name = "service_management")
+public class ServiceManagement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -14,7 +14,7 @@ public class HotelService {
     private Hotel hotel;
     @ManyToOne
     @JoinColumn(name = "service_id", nullable = false)
-    private Service service;
+    private ServiceCategory service;
 
     public Long getId() {
         return id;
@@ -32,11 +32,11 @@ public class HotelService {
         this.hotel = hotel;
     }
 
-    public Service getService() {
+    public ServiceCategory getService() {
         return service;
     }
 
-    public void setService(Service service) {
+    public void setService(ServiceCategory service) {
         this.service = service;
     }
 }
