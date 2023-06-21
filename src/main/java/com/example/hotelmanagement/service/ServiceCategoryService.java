@@ -14,19 +14,19 @@ public class ServiceCategoryService {
         this.serviceCategoryRepository = serviceCategoryRepository;
     }
 
-    public ServiceCategory createServiceCategory(ServiceCategory serviceCategory){
+    public ServiceCategory createServiceCategory(ServiceCategory serviceCategory) {
         return serviceCategoryRepository.save(serviceCategory);
     }
 
-    public List<ServiceCategory> getAllServiceCategories(){
+    public List<ServiceCategory> getAllServiceCategories() {
         return serviceCategoryRepository.findAll();
     }
 
-    public ServiceCategory getServiceCategoryById(Long serviceCategoryId){
+    public ServiceCategory getServiceCategoryById(Long serviceCategoryId) {
         return serviceCategoryRepository.findById(serviceCategoryId).orElse(null);
     }
 
-    public ServiceCategory updateServiceCategory(Long id, ServiceCategory updatedServiceCategory){
+    public ServiceCategory updateServiceCategory(Long id, ServiceCategory updatedServiceCategory) {
         ServiceCategory existingServiceCategory = serviceCategoryRepository.findById(id).orElse(null);
         if (existingServiceCategory != null) {
             existingServiceCategory.setCategory(updatedServiceCategory.getCategory());
@@ -41,7 +41,7 @@ public class ServiceCategoryService {
 
     }
 
-    public void deleteServiceCategoryById(Long serviceCategoryId){
+    public void deleteServiceCategoryById(Long serviceCategoryId) {
         serviceCategoryRepository.deleteById(serviceCategoryId);
     }
 }

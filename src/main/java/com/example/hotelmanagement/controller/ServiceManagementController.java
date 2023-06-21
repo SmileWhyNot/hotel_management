@@ -18,19 +18,19 @@ public class ServiceManagementController {
     }
 
     @PostMapping
-    public ResponseEntity<ServiceManagement> createServiceManagement(@RequestBody ServiceManagement serviceManagement){
+    public ResponseEntity<ServiceManagement> createServiceManagement(@RequestBody ServiceManagement serviceManagement) {
         ServiceManagement createdServiceManagement = serviceManagementService.createServiceManagement(serviceManagement);
         return new ResponseEntity<>(createdServiceManagement, HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity<List<ServiceManagement>> getAllServiceManagements(){
+    public ResponseEntity<List<ServiceManagement>> getAllServiceManagements() {
         List<ServiceManagement> serviceManagements = serviceManagementService.getAllServiceManagement();
         return new ResponseEntity<>(serviceManagements, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ServiceManagement> getServiceManagementById(@PathVariable("id")Long id) {
+    public ResponseEntity<ServiceManagement> getServiceManagementById(@PathVariable("id") Long id) {
         ServiceManagement serviceManagement = serviceManagementService.getServiceManagementById(id);
         if (serviceManagement != null) {
             return new ResponseEntity<>(serviceManagement, HttpStatus.OK);
@@ -40,7 +40,7 @@ public class ServiceManagementController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ServiceManagement> updateServiceManagement(@PathVariable("id") Long id, @RequestBody ServiceManagement serviceManagement){
+    public ResponseEntity<ServiceManagement> updateServiceManagement(@PathVariable("id") Long id, @RequestBody ServiceManagement serviceManagement) {
         ServiceManagement updatedServiceManagement = serviceManagementService.updateServiceManagement(id, serviceManagement);
         if (updatedServiceManagement != null) {
             return new ResponseEntity<>(updatedServiceManagement, HttpStatus.OK);
@@ -50,7 +50,7 @@ public class ServiceManagementController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ServiceManagement> deleteServiceManagement(@PathVariable("id")Long id) {
+    public ResponseEntity<ServiceManagement> deleteServiceManagement(@PathVariable("id") Long id) {
         serviceManagementService.deleteServiceManagementById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

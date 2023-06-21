@@ -21,7 +21,8 @@ public class ServiceManagementService {
         this.hotelRepository = hotelRepository;
         this.serviceCategoryRepository = serviceCategoryRepository;
     }
-    public ServiceManagement createServiceManagement(ServiceManagement serviceManagement){
+
+    public ServiceManagement createServiceManagement(ServiceManagement serviceManagement) {
         Long hotelId = serviceManagement.getHotel().getId();
         Hotel hotel = hotelRepository.findById(hotelId).orElse(null);
         Long serviceCategoryId = serviceManagement.getService().getId();
@@ -44,8 +45,8 @@ public class ServiceManagementService {
         return serviceManagementRepository.findById(serviceManagementId).orElse(null);
     }
 
-    public ServiceManagement updateServiceManagement(Long id, ServiceManagement updatedServiceManagement){
-        ServiceManagement existingServiceManagement = serviceManagementRepository.getReferenceById(id);
+    public ServiceManagement updateServiceManagement(Long id, ServiceManagement updatedServiceManagement) {
+        ServiceManagement existingServiceManagement = serviceManagementRepository.findById(id).orElse(null);
         if (existingServiceManagement != null) {
             existingServiceManagement.setHotel(updatedServiceManagement.getHotel());
             existingServiceManagement.setService(updatedServiceManagement.getService());

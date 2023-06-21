@@ -50,7 +50,7 @@ public class ServiceCategoryController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ServiceCategory> deleteServiceCategory(@PathVariable("id")Long id){
+    public ResponseEntity<ServiceCategory> deleteServiceCategory(@PathVariable("id") Long id) {
         serviceCategoryService.deleteServiceCategoryById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

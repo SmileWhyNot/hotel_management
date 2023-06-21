@@ -47,12 +47,12 @@ public class RoomService {
             existingRoom.setPrice(updatedRoom.getPrice());
             existingRoom.setBedCount(updatedRoom.getBedCount());
             return roomRepository.save(existingRoom);
-        }else {
+        } else {
             return null;
         }
     }
 
-    public void deleteRoomById(Long roomId){
+    public void deleteRoomById(Long roomId) {
         roomRepository.deleteById(roomId);
     }
 }

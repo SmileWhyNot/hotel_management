@@ -2,7 +2,6 @@ package com.example.hotelmanagement.service;
 
 import com.example.hotelmanagement.model.Booking;
 import com.example.hotelmanagement.model.Client;
-import com.example.hotelmanagement.model.Hotel;
 import com.example.hotelmanagement.model.Room;
 import com.example.hotelmanagement.repository.BookingRepository;
 import com.example.hotelmanagement.repository.ClientRepository;
@@ -38,15 +37,15 @@ public class BookingService {
         }
     }
 
-    public List<Booking> getAllBookings(){
+    public List<Booking> getAllBookings() {
         return bookingRepository.findAll();
     }
 
-    public Booking getBookingById(Long hotelId){
+    public Booking getBookingById(Long hotelId) {
         return bookingRepository.findById(hotelId).orElse(null);
     }
 
-    public Booking updateBooking(Long id, Booking updatedBooking){
+    public Booking updateBooking(Long id, Booking updatedBooking) {
         Booking existingBooking = bookingRepository.findById(id).orElse(null);
         if (existingBooking != null) {
             existingBooking.setStartDate(updatedBooking.getStartDate());

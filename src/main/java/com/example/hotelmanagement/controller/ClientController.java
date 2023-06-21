@@ -18,21 +18,21 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<Client> createClient(@RequestBody Client client){
+    public ResponseEntity<Client> createClient(@RequestBody Client client) {
         Client createdClient = clientService.createClient(client);
         return new ResponseEntity<>(createdClient, HttpStatus.CREATED);
     }
 
     @GetMapping
-    public ResponseEntity <List<Client>> getAllClients() {
+    public ResponseEntity<List<Client>> getAllClients() {
         List<Client> clients = clientService.getAllClients();
         return new ResponseEntity<>(clients, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Client> getClientById(@PathVariable("id") Long id){
+    public ResponseEntity<Client> getClientById(@PathVariable("id") Long id) {
         Client client = clientService.getClientById(id);
-        if (client != null){
+        if (client != null) {
             return new ResponseEntity<>(client, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -50,7 +50,7 @@ public class ClientController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Client> deleteClient(@PathVariable("id") Long id){
+    public ResponseEntity<Client> deleteClient(@PathVariable("id") Long id) {
         clientService.deleteClientById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

@@ -24,7 +24,7 @@ public class RoomController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Room>> getAllRooms(){
+    public ResponseEntity<List<Room>> getAllRooms() {
         List<Room> rooms = roomService.getAllRooms();
         return new ResponseEntity<>(rooms, HttpStatus.OK);
     }
@@ -34,7 +34,7 @@ public class RoomController {
         Room room = roomService.getRoomById(id);
         if (room != null) {
             return new ResponseEntity<>(room, HttpStatus.OK);
-        }else {
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
@@ -44,13 +44,13 @@ public class RoomController {
         Room updatedRoom = roomService.updateRoom(id, room);
         if (updatedRoom != null) {
             return new ResponseEntity<>(room, HttpStatus.OK);
-        }else{
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Room> deleteRoom(@PathVariable("id") Long id){
+    public ResponseEntity<Room> deleteRoom(@PathVariable("id") Long id) {
         roomService.deleteRoomById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
